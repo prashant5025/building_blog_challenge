@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../model/User");
 const bcrypt = require("bcrypt");
+const email = require("../middleware/email");
 
 router.post("/register", async (req, res) => {
     try {
@@ -30,6 +31,7 @@ router.post("/login", async (req, res) => {
             res.status(400).json("Please fill in all fields");
         } else {
             const user = await User.findOne({ username: req.body.username });
+
 
             // if no user
             !user && res.status(401).json("Wrong credentials");
