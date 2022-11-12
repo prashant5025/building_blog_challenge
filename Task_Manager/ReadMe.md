@@ -12,3 +12,14 @@
 <code>api.get('/api/v1/tasks')</code>  **--update task**
 
 <code>api.get('/api/v1/tasks')</code>  **--delete task**
+
+##   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     Rest API </br>
+</br>
+
+
+| GET       | api/tasks     | Get All Tasks |
+| --------- | ------------- | ------------- |
+| POST      | api/tasks     | Create Task   |
+| GET       | api/tasks/:id | Get Task      |
+| PUT/PATCH | api/tasks/:id | Update Task   |
+| DELETE    | api/tasks/:id | Delete Task   |
