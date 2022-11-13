@@ -11,11 +11,11 @@ const createTask = (req, res) => {
 }
 
 const updateTask = (req, res) => {
-    res.send('update a task')
+    res.json('update a task')
 }
 
 const deleteTask = (req, res) => {
-    res.send('delete a task')
+    res.json('delete a task')
 }
 
 module.exports = {

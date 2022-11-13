@@ -13,11 +13,13 @@ app.use('/api/v1/tasks', tasks);
 
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+const start = async () => {
     try{
-        console.log(`Server running on port ${PORT}...`);
-        connectDB();
+        await connectDB(process.env.MONGODB_URI);
+        app.listen(PORT, console.log(`Server is listening on port ${PORT}...`));
     }catch(err){
-        res.status(500).send({error: err});
+        console.log(err)
     }
-})
+}
+
+start();
