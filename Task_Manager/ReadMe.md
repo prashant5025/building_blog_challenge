@@ -17,9 +17,10 @@
 </br>
 
 
-| GET       | api/tasks     | Get All Tasks |
-| --------- | ------------- | ------------- |
-| POST      | api/tasks     | Create Task   |
-| GET       | api/tasks/:id | Get Task      |
-| PUT/PATCH | api/tasks/:id | Update Task   |
-| DELETE    | api/tasks/:id | Delete Task   |
+| GET       | api/tasks        | Get All Tasks |
+| --------- | -------------    | ------------- |
+| Get       | api/v1/tasks     | Get all Tasks |
+| POST      | api/v1/tasks     | Create Task   |
+| GET       | api/v1/tasks/:id | Get Task      |
+| PUT/PATCH | api/v1/tasks/:id | Update Task   |
+| DELETE    | api/v1tasks/:id  | Delete Task   |
