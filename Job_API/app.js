@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
+const connectDB = require('./db/connect');
 
 const students = [{
     name: 'John',
@@ -20,6 +21,9 @@ const start = async () => {
     try{
         app.listen(PORT, () => {
             console.log(`Server started on port ${PORT}...`);
+            // db connection
+            connectDB(process.env.MONGO_URI);
+            
         })
     }catch(err){
         console.log(err);
