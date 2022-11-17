@@ -12,4 +12,13 @@ const userPostMethod = async (req, res) => {
     }
 }
 
-module.exports = userPostMethod;
+const getAllUsers = async (req, res) => {
+    try{
+        const users = await User.find({})
+        res.status(200).json({success: true, data: users});
+    }catch(err){
+        res.status(400).json({success: false, msg: err.message});
+    }
+}
+
+module.exports = {userPostMethod, getAllUsers};
