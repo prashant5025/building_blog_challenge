@@ -3,15 +3,22 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
+//Routers
+const jobsRouter = require('./routes/job');
+const usersRouter = require('./routes/user');
+
+
 //Middleware
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
+const connectDB = require('./db/connect');
 
 app.use(express.static('./public'));
 app.use(express.json());
 
-//Routes
-
+//routes
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/jobs', jobsRouter);
 
 //Middleware
 app.use(notFoundMiddleware);
