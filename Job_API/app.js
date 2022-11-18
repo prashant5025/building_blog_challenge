@@ -1,18 +1,26 @@
 require('dotenv').config();
-
+//packages
 const express = require('express');
 const app = express();
-const connectDB = require('./db/connect');
-const userRoute = require('./routes/user');
 
+//Middleware
+const notFoundMiddleware = require('./middleware/not-found');
+const errorHandlerMiddleware = require('./middleware/error-handler');
+
+app.use(express.static('./public'));
 app.use(express.json());
-app.use('/api/v1/users', userRoute);
 
-app.post('/',async (req,res) => {
-    
-})
+//Routes
 
-const PORT = process.env.PORT || 3000;
+
+//Middleware
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
+
+//local port
+const PORT = process.env.PORT || 8080;
+
+//start server
 const start = async () => {
     try{
         //db connection
