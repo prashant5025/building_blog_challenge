@@ -18,7 +18,18 @@ const register = async (req, res) => {
 
 // @dec login user and get token
 const login = async (req, res) => {
-  res.send("Login");
+  const { email, password } = req.body;
+  if(!email && !password){
+      throw new BadRequest("Please provide email and password");
+  }
+  const user = await User.findOne({
+    email,password
+  });
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+  res.status(200).json({ user, token });
+
 };
 
 module.exports = {
