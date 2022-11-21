@@ -1,4 +1,4 @@
-const CustomAPIError = require('./custom-error')
+const CustomAPIError = require('./custom-api')
 const BadRequest = require('./bad-request')
 const UnauthenticatedError = require('./unauthenticated')
 
