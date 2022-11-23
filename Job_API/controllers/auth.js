@@ -14,10 +14,8 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    // throw new BadRequestError("Please provide email and password");
-    return res
-      .status(StatusCodes.BAD_REQUEST)
-      .json({ error: "Please provide email and password" });
+    throw new BadRequestError("Please provide email and password");
+    
   }
 
   const user = await User.findOne({email});
@@ -28,7 +26,7 @@ const login = async (req, res) => {
 //compare password
   const isPasswordCorrect = await user.comparePassword(password)
   if (!isPasswordCorrect) {
-    res.status(StatusCodes.UNAUTHORIZED).json("Invalid credentials");
+    throw new UnauthenticatedError("Invalid credentials");
   }
 
 
