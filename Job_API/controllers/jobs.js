@@ -29,7 +29,7 @@ const createJob = async (req, res) => {
   }
 const updateJob = async (req, res) => {
     const {body:{company,position},user:{userId}, params:{id:jobId}} = req
-    
+
     if(company === '' || position === ''){
         throw new BadRequestError('Please fill in all fields')
     }
@@ -49,7 +49,7 @@ const updateJob = async (req, res) => {
 const deleteJob = async (req, res) => {
     const {user: {userId}, params:{id:jobId}} = req
 
-    const job = await Job.findOneAndDelete({
+    const job = await Job.findOneAndRemove({
         _id: jobId,
         createdBy: userId
     })
@@ -61,7 +61,8 @@ const deleteJob = async (req, res) => {
 
 module.exports = {
     getAllJobs,
-    getJob,
+    get
+Job,
     createJob,
     updateJob,
     deleteJob
